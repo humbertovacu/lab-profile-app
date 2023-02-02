@@ -71,9 +71,12 @@ router.post('/login', (req, res) => {
     })
 })
 
-router.get("/verify", (req, res)=> {
+router.get("/verify", isAuthenticated, (req, res)=> {
     console.log(req.payload)
     res.status(200).json(req.payload)
 })
+
+
+
 
 module.exports = router;
