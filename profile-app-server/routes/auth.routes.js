@@ -6,8 +6,10 @@ const User = require("../models/User.model");
 
 const saltRounds =  10;
 
+
 router.post("/signup", (req, res, next) => {
   const { username, password, campus, course } = req.body;
+
   if(username === "" || password === ""){
     res.status(400).json({message: "Please enter valid username and password"});
     return
@@ -72,11 +74,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get("/verify", isAuthenticated, (req, res)=> {
-    console.log(req.payload)
     res.status(200).json(req.payload)
 })
-
-
-
 
 module.exports = router;
